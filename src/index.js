@@ -1,8 +1,8 @@
 const isLargeDesktop = window.innerWidth >= 992;
 
-let c1, c2, selectStation, data;
+let c1, realtime, c2, selectStation, data;
 
-function sendRequest() {
+function sendForecastRequest() {
   $.ajax('https://tourism.api.opendatahub.bz.it/v1/Weather?language=de&extended=true')
       .done((newData) => {
         data = newData;
@@ -17,6 +17,22 @@ function sendRequest() {
         c2.innerHTML = alertMsg;
         selectStation.disabled = true;
       });
+}
+
+function sendRealtimeRequest() {
+  $.ajax('https://tourism.opendatahub.bz.it/v1/Weather/Realtime?language=de')
+      .done(processRealtime)
+      .fail(function () {
+        realtime.innerHTML = `<div class="alert alert-danger" role="alert">
+          An error occurred: can't reach weather services!
+        </div>`;
+      });
+}
+
+function processRealtime(allRealtimeData) {
+  const realtimeData = allRealtimeData.filter(t => t.id === '1242')[0];
+  const measurement = realtimeData.measurements.filter(m => m.code === 'LT')[0];
+  realtime.innerHTML = `<img src="${measurement.imageUrl}" alt="chart"/>`
 }
 
 function processResponse() {
@@ -94,10 +110,12 @@ function getSelectStation() {
 
 document.addEventListener('DOMContentLoaded', () => {
   c1 = $('#c1')[0];
+  realtime = $('#realtime')[0];
   c2 = $('#c2')[0];
   selectStation = $('#select-station')[0];
 
-  sendRequest();
+  sendForecastRequest();
+  sendRealtimeRequest();
 
   selectStation.addEventListener('change', (e) => {
     if (e.target.value === '') return;
