@@ -9,7 +9,7 @@ function sendForecastRequest() {
         processResponse();
       })
       .fail(function () {
-        const alertMsg = `<div class="alert alert-danger" role="alert">
+        const alertMsg = `<div class="alert alert-danger mt-1" role="alert">
           An error occurred: can't reach weather services!
         </div>`
 
