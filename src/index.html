@@ -1,0 +1,51 @@
+<html lang="de">
+<head>
+    <meta
+            content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+            name="viewport"
+    />
+
+    <link href="./css/bootstrap.css" rel="stylesheet">
+
+    <title>Wetter</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ms-3" href="#">OpenDataHub Weather</a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-md-8 col-12">
+        <div class="container">
+            <h3 class="m-2 mb-4">Wetterinformation und Vorhersage</h3>
+            <div id="c1"></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-12">
+        <div class="container" style="background-color: #f0f0f0">
+            <h3 class="m-2 mb-4">Auswahl Wetterstation</h3>
+            <div id="c2"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
